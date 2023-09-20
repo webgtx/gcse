@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BRANCH="master"
-STORAGE_URL="https://raw.githubusercontent.com/webgtx/gcse/$branch/"
+STORAGE_URL="https://raw.githubusercontent.com/webgtx/gcse$branch"
 TS_ARCH="386"
 TS_RELEASE_URL="https://pkgs.tailscale.com/stable/tailscale_1.48.2_$TS_ARCH.tgz"
 
