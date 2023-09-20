@@ -15,8 +15,10 @@ curl $STORAGE_URL/configs/sshd_config -o /etc/ssh/sshd_config
 /usr/sbin/sshd
 
 # Connect to tailscale network
-wget TS_RELEASE_URL
+wget $TS_RELEASE_URL
 tar xf tailscale*
+
+rm *.tgz
 cd tailscale*
-nohup ./tailscaled > /dev/null > 2>&1
+nohup ./tailscaled > /dev/null 2>&1
 
