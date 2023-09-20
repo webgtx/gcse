@@ -11,7 +11,7 @@ if [[ $USER != "root" ]]; then
 fi
 
 # Setup SSHD
-curl $STORAGE_URL/configs/sshd_config -o /etc/ssh/sshd_config
+curl "$STORAGE_URL/configs/sshd_config" -o /etc/ssh/sshd_config
 /usr/sbin/sshd
 
 # Connect to tailscale network
@@ -20,5 +20,5 @@ tar xf tailscale*
 
 rm *.tgz
 cd tailscale*
-nohup ./tailscaled > /dev/null 2>&1
-
+nohup ./tailscaled > /dev/null 2>&1 &
+./tailscale up
