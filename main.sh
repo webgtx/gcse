@@ -1,4 +1,4 @@
-#!/usr/env bash
+#!/bin/bash
 
 BRANCH="master"
 STORAGE_URL="https://raw.githubusercontent.com/webgtx/gcse/$branch/"
