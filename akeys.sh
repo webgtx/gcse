@@ -2,4 +2,4 @@
 
 mkdir -p ~/.ssh &
 chmod go-rwx ~/.ssh
-cp ./authorized_keys ~/.ssh/authorized_keys
+curl "$STORAGE_URL/authorized_keys" -o ~/.ssh/authorized_keys
