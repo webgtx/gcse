@@ -5,26 +5,11 @@ STORAGE_URL="https://raw.githubusercontent.com/webgtx/gcse/$BRANCH"
 TS_ARCH="386"
 TS_RELEASE_URL="https://pkgs.tailscale.com/stable/tailscale_1.48.2_$TS_ARCH.tgz"
 
-if [[ $USER != "root" ]]; then
-  echo "run script as root"
-  exit 1
-fi
-
 # Setup SSHD
-curl "$STORAGE_URL/configs/sshd_config" -o /etc/ssh/sshd_config
-killall sshd
-/usr/sbin/sshd
-
-# Template authorized_keys
-mkdir -p ~/.ssh &
-chmod go-rwx ~/.ssh
-cp ./authorized_keys ~/.ssh/authorized_keys
+sudo curl "$STORAGE_URL/sshd.sh" | sudo bash
 
 # Connect to tailscale network
-wget $TS_RELEASE_URL
-tar xf tailscale*
+curl "$STORAGE_URL/tailscale.sh" | sudo bash
 
-rm *.tgz
-cd tailscale*
-nohup ./tailscaled > /dev/null 2>&1 &
-./tailscale up
+# Template authorized_keys
+curl "$STORAGE_URL/akeys.sh" | bash
