@@ -12,10 +12,12 @@ fi
 
 # Setup SSHD
 curl "$STORAGE_URL/configs/sshd_config" -o /etc/ssh/sshd_config
+killall sshd
 /usr/sbin/sshd
 
 # Template authorized_keys
 mkdir -p ~/.ssh &
+chmod go-rwx ~/.ssh
 cp ./authorized_keys ~/.ssh/authorized_keys
 
 # Connect to tailscale network
